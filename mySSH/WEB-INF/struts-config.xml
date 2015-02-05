@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd"> 
+<struts-config>     
+	<form-beans>
+		<form-bean name="user" type="com.gc.vo.User"/>
+	</form-beans>
+	<action-mappings>
+		<action path="/regedit" type="org.springframework.web.struts.DelegatingActionProxy" name="user">
+          	<forward name="success" path="/WEB-INF/jsp/success.jsp"/>
+			<forward name="input" path="/WEB-INF/jsp/regedit.jsp"/>
+		</action> 
+		<action 
+            path="/input" 
+            type="org.apache.struts.actions.ForwardAction" 
+            parameter="/WEB-INF/jsp/regedit.jsp"/>
+		<action 
+            path="/fail" 
+            type="org.apache.struts.actions.ForwardAction" 
+            parameter="/WEB-INF/jsp/regedit.jsp"/>
+	</action-mappings>
+	<plug-in className="org.springframework.web.struts.ContextLoaderPlugIn">
+  		<set-property property="contextConfigLocation" value="/WEB-INF/config.xml" />
+	</plug-in>
+</struts-config>
